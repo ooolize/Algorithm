@@ -1,0 +1,30 @@
+# 什么是队列
+> 队列是一个简单的等待序列，在尾部加入元素时队列加长，在前端删除数据时队列缩短。与栈不同，队列是一种使用两端的结构，一段加入新元素，另一端
+用来删除元素。队列是先进先出的结构(FIFO)。
+
+# 队列的实现
+> 使用数组当然可以实现队列，但并不是最佳，采用数组需用两个指示器(first,last)跟踪队列情况，而且当像数组末端加入元素又是一种情况。
+这里我们用链表实现更好。
+
+头文件如下:
+```c++
+Queue.h
+#ifndef _QUEUE_H_
+#define _QUEUE_H_
+#include<iostream>
+#include<list>
+using namespace::std;
+
+template<class T>
+class Queue{
+public:
+	Queue()=default;
+	bool IsEmpty() {return l.empty();}
+	size_t size()  {return l.size();}
+	void push(const T&val){l.push_back(val);}
+	T& frontel(){return l.front();}
+	T& pop(){const T&=l.front();l.pop_front();return T;}
+private:
+	list<T> l;
+};
+```
